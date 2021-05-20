@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CardList from '../Components/CardList';
 import './App.css';
 import Header from '../Components/Header';
+import ErrorBoundary from '../Components/ErrorBoundary';
 
 export default class App extends Component {
     constructor() {
@@ -33,7 +34,9 @@ export default class App extends Component {
             return (
                 <div className='tc'>
                     <Header onSearchChange = {this.onSearchChange} />
-                    <CardList robots = {filteredRobots} />
+                    <ErrorBoundary>
+                        <CardList robots = {filteredRobots} />
+                    </ErrorBoundary>
                 </div>
             );
         }
